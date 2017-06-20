@@ -48,7 +48,8 @@ namespace Vega
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
                     HotModuleReplacement = true
                 });
             }
@@ -58,6 +59,15 @@ namespace Vega
             }
 
             app.UseStaticFiles();
+
+            var options = new JwtBearerOptions
+            {
+                Audience = "https://schools-project.com",
+                Authority = "https://mhboubati.auth0.com/"
+            };
+            app.UseJwtBearerAuthentication(options);
+
+            app.UseMvc();
 
             app.UseMvc(routes =>
             {

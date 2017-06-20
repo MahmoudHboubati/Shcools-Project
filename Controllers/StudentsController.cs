@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using vega.Controllers.Resources;
@@ -9,22 +10,23 @@ using vega.Persistence;
 
 namespace vega.Controllers
 {
-  public class StudentsController : Controller
-  {
-    private readonly VegaDbContext context;
-    private readonly IMapper mapper;
-    public StudentsController(VegaDbContext context, IMapper mapper)
+    public class StudentsController : Controller
     {
-      this.mapper = mapper;
-      this.context = context;
-    }
+        private readonly VegaDbContext context;
+        private readonly IMapper mapper;
+        public StudentsController(VegaDbContext context, IMapper mapper)
+        {
+            this.mapper = mapper;
+            this.context = context;
+        }
 
-    // [HttpGet("/api/features")]
-    // public async Task<IEnumerable<FeatureResource>> GetFeatures()
-    // {
-    //   var features = await context.Features.ToListAsync();
-      
-    //   return mapper.Map<List<Feature>, List<FeatureResource>>(features); 
-    // }
-  }
+        [HttpGet("/api/students")]
+        [Authorize]
+        public async Task<IEnumerable<StudentResource>> Get()
+        {
+            var students = await context.Students.ToListAsync();
+
+            return mapper.Map<List<Student>, List<StudentResource>>(students);
+        }
+    }
 }
