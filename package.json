@@ -46,5 +46,8 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.1.2"
+  },
+  "scripts": {
+    "precompile": ["webpack"]
   }
 }

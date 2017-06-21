@@ -10,7 +10,7 @@ using vega.Persistence;
 
 namespace vega.Controllers
 {
-    public class StudentsController : Controller
+    public class StudentsController : BaseController
     {
         private readonly VegaDbContext context;
         private readonly IMapper mapper;
@@ -25,7 +25,6 @@ namespace vega.Controllers
         public async Task<IEnumerable<StudentResource>> Get()
         {
             var students = await context.Students.ToListAsync();
-
             return mapper.Map<List<Student>, List<StudentResource>>(students);
         }
     }
