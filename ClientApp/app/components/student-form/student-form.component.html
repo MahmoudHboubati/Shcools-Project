@@ -1,3 +1,34 @@
-<p>
-  student-form works!
-</p>
+<h1>
+    New Student
+</h1>
+<form (ngSubmit)="addNew()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" id="name" [(ngModel)]="student.name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="midlleName">Middle Name</label>
+        <input class="form-control" type="text" id="midlleName" [(ngModel)]="student.middleName" name="midlleName">
+    </div>
+    <button class="btn btn-default">
+    Add
+</button>
+</form>
+<table class="table" *ngIf="students">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Midlle Name</th>
+            <th>Last Name</th>
+            <th>Date of birth</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{ student.name }}</td>
+            <td>{{ student.midlleName }}</td>
+            <td>{{ student.lastName }}</td>
+            <td>{{ student.birthdate }}</td>
+        </tr>
+    </tbody>
+</table>

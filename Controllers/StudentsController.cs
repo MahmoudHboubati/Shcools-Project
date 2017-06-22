@@ -10,6 +10,7 @@ using vega.Persistence;
 
 namespace vega.Controllers
 {
+    [Route("/api/students")]
     public class StudentsController : BaseController
     {
         private readonly VegaDbContext context;
@@ -21,11 +22,24 @@ namespace vega.Controllers
         }
 
         [HttpGet("/api/students")]
-        [Authorize]
         public async Task<IEnumerable<StudentResource>> Get()
         {
             var students = await context.Students.ToListAsync();
             return mapper.Map<List<Student>, List<StudentResource>>(students);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody]StudentResource studentResource)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            Student student = mapper.Map<Student>(studentResource);
+            context.Students.Add(student);
+
+            await context.SaveChangesAsync();
+            var result = mapper.Map<StudentResource>(student);
+            return Ok(result);
         }
     }
 }
