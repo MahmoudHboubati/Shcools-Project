@@ -1,16 +1,17 @@
 <h1>
     New Student
 </h1>
-<form (ngSubmit)="addNew()">
+<form #f="ngForm" (ngSubmit)="addNew()" novalidate>
     <div class="form-group">
         <label for="name">Name</label>
-        <input class="form-control" type="text" id="name" [(ngModel)]="student.name" name="name">
+        <input class="form-control" type="text" id="name" [(ngModel)]="student.name" name="name" required #first="ngModel">
+        <div class="alert alert-danger" *ngIf="first.touched && !first.valid">Field is required.</div>
     </div>
     <div class="form-group">
         <label for="midlleName">Middle Name</label>
         <input class="form-control" type="text" id="midlleName" [(ngModel)]="student.middleName" name="midlleName">
     </div>
-    <button class="btn btn-default">
+    <button class="btn btn-default" [disabled]="!f.valid">
     Add
 </button>
 </form>
