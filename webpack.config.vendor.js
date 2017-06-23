@@ -28,6 +28,7 @@ module.exports = (env) => {
                 'angular2-universal-polyfills',
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
+                'bootstrap-rtl/dist/css/bootstrap-rtl.css',
                 'es6-shim',
                 'es6-promise',
                 'event-source-polyfill',
