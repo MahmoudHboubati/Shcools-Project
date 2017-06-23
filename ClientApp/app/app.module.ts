@@ -1,3 +1,6 @@
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Http } from '@angular/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { StudentService } from './services/student.service';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -10,8 +13,13 @@ import { CounterComponent } from './components/counter/counter.component';
 import { StudentFormComponent } from './components/student-form/student-form.component';
 import { FormsModule } from '@angular/forms';
 
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(http: Http) {
+    return new TranslateHttpLoader(http, './i18n/', '.json');
+}
+
 @NgModule({
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         NavMenuComponent,
@@ -30,7 +38,14 @@ import { FormsModule } from '@angular/forms';
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
-        ])
+        ]),
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [Http]
+            }
+        })
     ],
     providers: [StudentService]
 })

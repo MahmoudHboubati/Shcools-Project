@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using vega.Persistence;
 using AutoMapper;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Vega
 {
@@ -59,6 +62,12 @@ namespace Vega
             }
 
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                Path.Combine(Directory.GetCurrentDirectory(), @"i18n")),
+                RequestPath = new PathString("/i18n")
+            });
 
             var options = new JwtBearerOptions
             {
