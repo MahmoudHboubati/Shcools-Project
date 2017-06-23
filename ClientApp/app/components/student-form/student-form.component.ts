@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class StudentFormComponent implements OnInit {
   public students;
-  public student: any = { name: '', middleName: '' };
+  public student: any = { name: '', middleName: '', lastName :'' };
 
   constructor(private studentService: StudentService, private translateService: TranslateService) {
   }
