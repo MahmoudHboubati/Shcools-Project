@@ -5,6 +5,8 @@
     "trAppName": "إدارة المدارس",
 
     "trNewStudentLink": "طالب جديد",
+    "trRegisterStudentLink": "تسجيل الطلاب",
+
     "trStudNameFldLbl": "اسم الطالب",
     "trStudNameFldPlc": "الرجاء إدخال اسم الطالب",
     "trStudMiddleNameFldLbl": "اسم الثاني للطالب",
@@ -14,6 +16,11 @@
     "trStudBirthDateFldLbl": "تاريخ الميلاد",
     "trStudBirthDateFldPlc": "الرجاء إدخال تاريخ الميلاد",
     "trNewStudPgHdr": "أضافه طالب جديد",
+
+    "trStudRegPgHdr": "تسجيل الطلاب",
+    "trStudRegStudFldLbl": "الطالب",
+    "trStudRegDateFldLbl": "تاديخ التسجيل",
+    "trStudRegYearFldLbl": "السنه الدراسيه",
 
     "trGenAddBtn": "إضافه",
     "trGenValdFieldIsRequired": "الحقل مطلوب"

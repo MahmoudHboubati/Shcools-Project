@@ -1,6 +1,5 @@
 import { StudentService } from './../../services/student.service';
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-student-form',
@@ -11,7 +10,7 @@ export class StudentFormComponent implements OnInit {
   public students;
   public student: any = { name: '', middleName: '', lastName :'' };
 
-  constructor(private studentService: StudentService, private translateService: TranslateService) {
+  constructor(private studentService: StudentService) {
   }
 
   ngOnInit() {

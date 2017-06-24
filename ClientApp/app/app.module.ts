@@ -1,3 +1,4 @@
+import { StudentRegistrationService } from './services/student-registration.service';
 import { StudentReginstrationComponent } from './components/student-reginstration/student-reginstration.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http } from '@angular/http';
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: Http) {
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'students/new', component: StudentFormComponent },
+            { path: 'students/register', component: StudentReginstrationComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
@@ -50,7 +52,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [StudentService]
+    providers: [StudentService, StudentRegistrationService]
 })
 export class AppModule {
 }

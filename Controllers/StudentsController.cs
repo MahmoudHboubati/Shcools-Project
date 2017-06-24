@@ -11,17 +11,14 @@ using vega.Persistence;
 namespace vega.Controllers
 {
     [Route("/api/students")]
-    public class StudentsController : BaseController
+    public class StudentsController : MainController
     {
-        private readonly VegaDbContext context;
-        private readonly IMapper mapper;
-        public StudentsController(VegaDbContext context, IMapper mapper)
+
+        public StudentsController(VegaDbContext context, IMapper mapper) : base(context, mapper)
         {
-            this.mapper = mapper;
-            this.context = context;
         }
 
-        [HttpGet("/api/students")]
+        [HttpGet]
         public async Task<IEnumerable<StudentResource>> Get()
         {
             var students = await context.Students.ToListAsync();

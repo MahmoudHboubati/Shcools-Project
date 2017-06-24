@@ -8,9 +8,9 @@ namespace vega.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Student, StudentResource>();
-            CreateMap<StudentResource, Student>();
+            CreateMap<Student, StudentResource>().ReverseMap();
 
+            CreateMap<StudentRegistration, StudentRegistrationResource>().ReverseMap();
         }
     }
 }
