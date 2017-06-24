@@ -1,0 +1,42 @@
+<h1>
+  {{'trNewStudRegPgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew()" novalidate>
+  <div class="form-group">
+    <label for="student">{{'trStudRegStudFldLbl' | translate}}</label>
+    <select class="form-control" type="text" [(ngModel)]="studReg.student" name="student">
+            <option *ngFor="let s of students" value="{{s.id}}" ></option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="regDate">{{'trStudRegDateFldLbl' | translate}}</label>
+    <input class="form-control" type="date" [(ngModel)]="studReg.birthDate" name="regDate" placeholder="{{'trStudRegDateFldPlc'|translate}}"
+      required #regDate="ngModel">
+    <div class="alert alert-danger" *ngIf="regDate.touched && !regDate.valid">{{'trGenValdFieldIsRequired'|translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="registrationYear">{{'trStudRegYearFldLbl' | translate}}</label>
+    <select class="form-control" [(ngModel)]="studReg.registrationYear" name="registrationYear">
+            <option *ngFor="let r of registrationYears" value="{{r.id}}" ></option>
+    </select>
+  </div>
+  <button class="btn btn-default" [disabled]="!f.valid">
+    {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="studentsRegistrations">
+  <thead>
+    <tr>
+      <th>{{'trStudFullNameFldLbl' | translate}}</th>
+      <th>{{'trStudRegDateFldLbl' | translate}}</th>
+      <th>{{'trStudRegYearFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ studentsRegistrations.student.fullName }}</td>
+      <td>{{ studentsRegistrations.registrationDate | date}}</td>
+      <td>{{ studentsRegistrations.registrationYear.Year }}</td>
+    </tr>
+  </tbody>
+</table>

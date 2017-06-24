@@ -1,7 +1,13 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace vega.Models
 {
     public class StudentRegistration
     {
-        public int Id {get;set;}
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public DateTime RegistrationDate { get; set; }
     }
 }

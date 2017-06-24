@@ -8,27 +8,14 @@ using vega.Persistence;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    partial class VegaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170624102607_AddStudentRegistrationTable")]
+    partial class AddStudentRegistrationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("vega.Models.RegistrationYear", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("EndYear");
-
-                    b.Property<int>("StartYear");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RegistrationYears");
-                });
 
             modelBuilder.Entity("vega.Models.Student", b =>
                 {

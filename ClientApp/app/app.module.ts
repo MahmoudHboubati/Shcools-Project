@@ -1,3 +1,4 @@
+import { StudentReginstrationComponent } from './components/student-reginstration/student-reginstration.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Http } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -11,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+
 import { FormsModule } from '@angular/forms';
 
 // AoT requires an exported function for factories
@@ -26,7 +28,8 @@ export function HttpLoaderFactory(http: Http) {
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        StudentFormComponent
+        StudentFormComponent,
+        StudentReginstrationComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
