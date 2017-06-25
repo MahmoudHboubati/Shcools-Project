@@ -3,40 +3,59 @@
 </h1>
 <form #f="ngForm" (ngSubmit)="addNew()" novalidate>
   <div class="form-group">
-    <label for="student">{{'trStudRegStudFldLbl' | translate}}</label>
-    <select class="form-control" type="text" [(ngModel)]="studReg.student" name="student">
+    <label for="studentId">{{'trStudRegStudFldLbl' | translate}}</label>
+    <select class="form-control" type="text" [(ngModel)]="studReg.studentId" name="studentId" id="studentId">
             <option *ngFor="let s of students" value="{{s.id}}" >{{s.fullName}}</option>
     </select>
   </div>
   <div class="form-group">
     <label for="regDate">{{'trStudRegDateFldLbl' | translate}}</label>
-    <input class="form-control" type="date" [(ngModel)]="studReg.registrationDate" name="regDate" placeholder="{{'trStudRegDateFldPlc'|translate}}"
+    <input class="form-control" type="date" [(ngModel)]="studReg.registrationDate" name="regDate" id="regDate" placeholder="{{'trStudRegDateFldPlc'|translate}}"
       required #regDate="ngModel">
-    <div class="alert alert-danger" *ngIf="regDate.touched && !regDate.valid">{{'trGenValdFieldIsRequired'|translate}}</div>
+    <div class="alert alert-danger" *ngIf="regDate.touched && !regDate.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
   </div>
   <div class="form-group">
-    <label for="registrationYear">{{'trStudRegYearFldLbl' | translate}}</label>
-    <select class="form-control" [(ngModel)]="studReg.registrationYear" name="registrationYear">
+    <label for="registrationYearId">{{'trStudRegYearFldLbl' | translate}}</label>
+    <select class="form-control" [(ngModel)]="studReg.registrationYearId" name="registrationYearId" id="registrationYearId" required
+      #regYear="ngModel">
             <option *ngFor="let r of registrationYears" value="{{r.id}}" >{{ r.startYear }} | {{r.endYear}}</option>
     </select>
+    <div class="alert alert-danger" *ngIf="regYear.touched && !regYear.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
   </div>
-  <button class="btn btn-default" [disabled]="!f.valid">
+  <div class="form-group">
+    <label for="grade">{{'trStudRegGradeFldLbl' | translate}}</label>
+    <select class="form-control" [(ngModel)]="studReg.gradeId" name="grade" id="grade" required #grad="ngModel">
+            <option *ngFor="let r of grades" value="{{r.id}}" >{{ r.name }}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="grad.touched && !grad.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span>
     {{'trGenAddBtn'|translate}}
   </button>
 </form>
 <table class="table" *ngIf="studentsRegistrations">
   <thead>
     <tr>
-      <!--<th>{{'trStudFullNameFldLbl' | translate}}</th>-->
+      <th>{{'trGenDeleteBtn' | translate}}</th>
       <th>{{'trStudRegDateFldLbl' | translate}}</th>
-      <!--<th>{{'trStudRegYearFldLbl' | translate}}</th>-->
+      <th>{{'trStudRegStudFldLbl' | translate}}</th>
+      <th>{{'trStudRegYearFldLbl' | translate}}</th>
+      <th>{{'trStudRegGradeFldLbl' | translate}}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let studentReg of studentsRegistrations">
-      <!--<td>{{ studentsRegistrations.student.fullName }}</td>-->
+      <td>
+        <button class="btn btn-danger" (click)="delete(studentReg)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
       <td>{{ studentReg.registrationDate | date}}</td>
-      <!--<td>{{ studentsRegistrations.registrationYear.startYear }} | {{studentsRegistrations.registrationYear.endYear}}</td>-->
+      <td>{{ studentReg.studentId }}</td>
+      <td>{{ studentReg.gradeId }}</td>
+      <td>{{ studentReg.registrationYearId }}</td>
     </tr>
   </tbody>
 </table>

@@ -24,7 +24,7 @@ namespace vega.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody]StudentRegistrationResource studentResource)
+        public async Task<IActionResult> Post([FromBody]StudentRegistrationResource studentResource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -35,6 +35,20 @@ namespace vega.Controllers
             await context.SaveChangesAsync();
             var result = mapper.Map<StudentRegistrationResource>(studentReg);
             return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var item = await context.StudentRegistrations.FindAsync(id);
+
+            if (item == null)
+                return NotFound();
+
+            context.Remove(item);
+            await context.SaveChangesAsync();
+
+            return Ok(id);
         }
     }
 }

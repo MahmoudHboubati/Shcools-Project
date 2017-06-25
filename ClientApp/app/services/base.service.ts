@@ -17,4 +17,8 @@ export class BaseService {
   add(item: any) {
     return this.http.post(this.baseUrl, item).map(res => { return res.json(); });
   }
+
+  delete(item: any) {
+    return this.http.delete(this.baseUrl + '/' + item.id).map(res => { return res.json(); });
+  }
 }

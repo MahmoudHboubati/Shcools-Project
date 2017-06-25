@@ -21,7 +21,10 @@
     "trStudRegStudFldLbl": "الطالب",
     "trStudRegDateFldLbl": "تاديخ التسجيل",
     "trStudRegYearFldLbl": "السنه الدراسيه",
+    "trStudRegGradeFldLbl":"الصف",
 
     "trGenAddBtn": "إضافه",
-    "trGenValdFieldIsRequired": "الحقل مطلوب"
+    "trGenDeleteBtn":"حذف",
+    "trGenValdFieldIsRequired": "الحقل مطلوب",
+    "trGenDelelteConfirmMessage":"الرجاء التاكيد على حذف البيانات ؟"
 }
