@@ -37,6 +37,11 @@
                         <span class='glyphicon glyphicon-plus'></span> {{'trRegisterStudentLink' | translate}}
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/grades/new']">
+                        <span class='glyphicon glyphicon-plus'></span> {{'trGradesLink' | translate}}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

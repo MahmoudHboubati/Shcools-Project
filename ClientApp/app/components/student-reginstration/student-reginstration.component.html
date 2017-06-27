@@ -1,7 +1,7 @@
 <h1>
   {{'trStudRegPgHdr' | translate}}
 </h1>
-<form #f="ngForm" (ngSubmit)="addNew()" novalidate>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
   <div class="form-group">
     <label for="studentId">{{'trStudRegStudFldLbl' | translate}}</label>
     <select class="form-control" type="text" [(ngModel)]="studReg.studentId" name="studentId" id="studentId">
@@ -30,8 +30,7 @@
     <div class="alert alert-danger" *ngIf="grad.touched && !grad.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
   </div>
   <button class="btn btn-primary" [disabled]="!f.valid">
-    <span class="glyphicon glyphicon-plus"></span>
-    {{'trGenAddBtn'|translate}}
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
   </button>
 </form>
 <table class="table" *ngIf="studentsRegistrations">

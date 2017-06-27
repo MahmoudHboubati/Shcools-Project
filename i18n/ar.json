@@ -6,6 +6,7 @@
 
     "trNewStudentLink": "طالب جديد",
     "trRegisterStudentLink": "تسجيل الطلاب",
+    "trGradesLink": "الصفوف (المراحل التعليميه)",
 
     "trStudNameFldLbl": "اسم الطالب",
     "trStudNameFldPlc": "الرجاء إدخال اسم الطالب",
@@ -21,10 +22,16 @@
     "trStudRegStudFldLbl": "الطالب",
     "trStudRegDateFldLbl": "تاديخ التسجيل",
     "trStudRegYearFldLbl": "السنه الدراسيه",
-    "trStudRegGradeFldLbl":"الصف",
+    "trStudRegGradeFldLbl": "الصف",
 
     "trGenAddBtn": "إضافه",
-    "trGenDeleteBtn":"حذف",
+    "trGenDeleteBtn": "حذف",
     "trGenValdFieldIsRequired": "الحقل مطلوب",
-    "trGenDelelteConfirmMessage":"الرجاء التاكيد على حذف البيانات ؟"
+    "trGenDelelteConfirmMessage": "الرجاء التاكيد على حذف البيانات ؟",
+
+    "trGradePgHdr": "صفحه الصفوف التعليميه",
+    "trGradeNameFldLbl": "اسم الصف",
+    "trGradeNameFldPlc": "الرجاء إدخال اسم الصف",
+    "trGradeDescriptionFldLbl": "التوصيف",
+    "trGradeDescriptionFldPlc": "الرجاء إدخال التوصيف"
 }

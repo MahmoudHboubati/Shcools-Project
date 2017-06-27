@@ -1,0 +1,39 @@
+<h1>
+  {{'trGradePgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
+  <div class="form-group">
+    <label for="name">{{'trGradeNameFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="grade.name" name="name" id="name" placeholder="{{'trGradeNameFldPlc'|translate}}"
+      required #name="ngModel">
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="description">{{'trGradeDescriptionFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="grade.description" name="description" id="description" placeholder="{{'trGradeDescriptionFldPlc'|translate}}">
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="grades">
+  <thead>
+    <tr>
+      <th>{{'trGenDeleteBtn' | translate}}</th>
+      <th>{{'trGradeNameFldLbl' | translate}}</th>
+      <th>{{'trDescriptionFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of grades">
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+    </tr>
+  </tbody>
+</table>

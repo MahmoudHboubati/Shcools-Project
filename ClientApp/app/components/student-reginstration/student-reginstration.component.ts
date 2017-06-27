@@ -58,10 +58,18 @@ export class StudentReginstrationComponent extends BaseComponent implements OnIn
     }
   }
 
-  addNew() {
+  // loadClasses() {
+  //   if (this.classes.length <= 0) {
+  //     this.classes.push({id: 1, yearId: 1, gradeId: 1 });
+  //     this.classes.push({id: 2, yearId: 1, gradeId: 2 });
+  //     this.classes.push({id: 3, yearId: 1, gradeId: 3 });
+  //   }
+  // }
+
+  addNew(form) {
     this.stdRegService.add(this.studReg).subscribe(added => {
       this.studentsRegistrations.push(added);
-      this.studReg = {};
+      form.resetForm();
     });
   }
 
@@ -69,8 +77,6 @@ export class StudentReginstrationComponent extends BaseComponent implements OnIn
     if (confirm(this.delConfirmMessage) == true) {
       this.stdRegService.delete(studentRegistration).subscribe(id => {
         this.studentsRegistrations.forEach((element, index) => {
-          console.log('element.id: ' + element.id)
-          console.log('id: ' + id)
           if (index > -1 && element.id == id)
             this.studentsRegistrations.splice(index, index + 1);
         });

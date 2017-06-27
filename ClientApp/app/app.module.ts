@@ -1,3 +1,4 @@
+import { GradeService } from './services/grade.service';
 import { StudentRegistrationService } from './services/student-registration.service';
 import { StudentReginstrationComponent } from './components/student-reginstration/student-reginstration.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -15,6 +16,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { StudentFormComponent } from './components/student-form/student-form.component';
 
 import { FormsModule } from '@angular/forms';
+import { GradeFormComponent } from './components/grade-form/grade-form.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -30,7 +32,8 @@ export function HttpLoaderFactory(http: Http) {
         FetchDataComponent,
         HomeComponent,
         StudentFormComponent,
-        StudentReginstrationComponent
+        StudentReginstrationComponent,
+        GradeFormComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -39,6 +42,7 @@ export function HttpLoaderFactory(http: Http) {
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'students/new', component: StudentFormComponent },
             { path: 'students/register', component: StudentReginstrationComponent },
+            { path: 'grades/new', component: GradeFormComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
@@ -52,7 +56,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [StudentService, StudentRegistrationService]
+    providers: [StudentService, StudentRegistrationService, GradeService]
 })
 export class AppModule {
 }
