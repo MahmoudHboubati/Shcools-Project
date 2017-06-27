@@ -38,7 +38,7 @@ namespace vega.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public override async Task<IActionResult> Delete(int id)
         {
             var item = await context.StudentRegistrations.FindAsync(id);
 

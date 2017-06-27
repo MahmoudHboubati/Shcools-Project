@@ -47,6 +47,11 @@
                         <span class='glyphicon glyphicon-plus'></span> {{'trStudyingYearsLink' | translate}}
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/class/new']">
+                        <span class='glyphicon glyphicon-plus'></span> {{'trClassLink' | translate}}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

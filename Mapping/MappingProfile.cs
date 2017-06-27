@@ -12,6 +12,7 @@ namespace vega.Mapping
             CreateMap<StudentRegistration, StudentRegistrationResource>().ReverseMap();
             CreateMap<Grade, GradeResource>().ReverseMap();
             CreateMap<StudyingYear, StudyingYearResource>().ReverseMap();
+            CreateMap<Class, ClassResource>().ReverseMap();
         }
     }
 }

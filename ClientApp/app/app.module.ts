@@ -1,3 +1,4 @@
+import { ClassService } from './services/class.service';
 import { StudyingYearService } from './services/studying-year.service';
 import { GradeService } from './services/grade.service';
 import { StudentRegistrationService } from './services/student-registration.service';
@@ -19,6 +20,7 @@ import { StudentFormComponent } from './components/student-form/student-form.com
 import { FormsModule } from '@angular/forms';
 import { GradeFormComponent } from './components/grade-form/grade-form.component';
 import { StudyingYearComponent } from './components/studying-year/studying-year.component';
+import { ClassComponent } from './components/class/class.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
@@ -36,7 +38,8 @@ export function HttpLoaderFactory(http: Http) {
         StudentFormComponent,
         StudentReginstrationComponent,
         GradeFormComponent,
-        StudyingYearComponent
+        StudyingYearComponent,
+        ClassComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -47,6 +50,7 @@ export function HttpLoaderFactory(http: Http) {
             { path: 'students/register', component: StudentReginstrationComponent },
             { path: 'grades/new', component: GradeFormComponent },
             { path: 'studyingYear/new', component: StudyingYearComponent },
+            { path: 'class/new', component: ClassComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
@@ -60,7 +64,7 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [StudentService, StudentRegistrationService, GradeService, StudyingYearService]
+    providers: [StudentService, StudentRegistrationService, GradeService, StudyingYearService, ClassService]
 })
 export class AppModule {
 }

@@ -1,0 +1,57 @@
+<h1>
+  {{'trClassPgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
+  <div class="form-group">
+    <label for="name">{{'trClassNameFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="classObj.name" name="name" id="name" placeholder="{{'trClassNameFldPlc'|translate}}"
+      required #name="ngModel">
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="description">{{'trClassDescriptionFldLbl' | translate}}</label>
+    <textarea class="form-control" type="text" [(ngModel)]="classObj.description" name="description" id="description" placeholder="{{'trClassDescriptionFldPlc'|translate}}"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="studyingYearId">{{'trClassStdYearFldLbl' | translate}}</label>
+    <select class="form-control" [(ngModel)]="classObj.studyingYearId" name="studyingYearId" id="studyingYearId" required #studyingYearId="ngModel">
+            <option *ngFor="let r of stdYears" value="{{r.id}}" >{{ r.startYear }} | {{r.endYear }}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="studyingYearId.touched && !studyingYearId.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="gradeId">{{'trClassGradeFldLbl' | translate}}</label>
+    <select class="form-control" [(ngModel)]="classObj.gradeId" name="gradeId" id="gradeId" required #gradeId="ngModel">
+            <option *ngFor="let r of grades" value="{{r.id}}" >{{ r.name }} </option>
+    </select>
+    <div class="alert alert-danger" *ngIf="gradeId.touched && !gradeId.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="classes">
+  <thead>
+    <tr>
+      <th>{{'trGenDeleteBtn' | translate}}</th>
+      <th>{{'trClassNameFldLbl' | translate}}</th>
+      <th>{{'trClassDescriptionFldLbl' | translate}}</th>
+      <th>{{'trClassStdYearFldLbl' | translate}}</th>
+      <th>{{'trClassGradeFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of classes">
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.studyingYearId }}</td>
+      <td>{{ item.gradeId }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -10,8 +10,5 @@ namespace vega.Controllers.Lookups
         public LookupController(VegaDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
-
-        [HttpDelete("{id}")]
-        public abstract Task<IActionResult> Delete(int id);
     }
 }
