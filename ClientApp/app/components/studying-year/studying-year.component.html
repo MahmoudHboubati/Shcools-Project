@@ -1,0 +1,55 @@
+<h1>
+  {{'trStudYearPgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
+  <div class="form-group">
+    <label for="name">{{'trStudYearNameFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="studYear.name" name="name" id="name" placeholder="{{'trStudYearNameFldPlc'|translate}}"
+      required #name="ngModel">
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="startYear">{{'trStudYearStartYearFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="studYear.startYear" name="startYear" id="startYear" placeholder="{{'trStudYearStartYearFldPlc'|translate}}"
+      required #startYear="ngModel">
+    <div class="alert alert-danger" *ngIf="startYear.touched && !startYear.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="endYear">{{'trStudYearEndYearFldLbl' | translate}}</label>
+    <input class="form-control" type="number" [(ngModel)]="studYear.endYear" name="endYear" id="endYear" placeholder="{{'trStudYearEndYearFldPlc'|translate}}"
+      required #endYear="ngModel">
+    <div class="alert alert-danger" *ngIf="endYear.touched && !endYear.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="description">{{'trStudYearDescriptionFldLbl' | translate}}</label>
+    <textarea class="form-control" [(ngModel)]="studYear.description" name="description" id="description" placeholder="{{'trStudYearDescriptionFldPlc'|translate}}"></textarea>
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="studyingYears">
+  <thead>
+    <tr>
+      <th>{{'trGenDeleteBtn' | translate}}</th>
+      <th>{{'trStudYearNameFldLbl' | translate}}</th>
+      <th>{{'trStudYearDescriptionFldLbl' | translate}}</th>
+      <th>{{'trStudYearStartYearFldLbl' | translate}}</th>
+      <th>{{'trStudYearEndYearFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of studyingYears">
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.startYear }}</td>
+      <td>{{ item.endYear }}</td>
+    </tr>
+  </tbody>
+</table>

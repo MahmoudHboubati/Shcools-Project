@@ -7,6 +7,7 @@
     "trNewStudentLink": "طالب جديد",
     "trRegisterStudentLink": "تسجيل الطلاب",
     "trGradesLink": "الصفوف (المراحل التعليميه)",
+    "trStudyingYearsLink": "السنوات الدراسيه",
 
     "trStudNameFldLbl": "اسم الطالب",
     "trStudNameFldPlc": "الرجاء إدخال اسم الطالب",
@@ -33,5 +34,15 @@
     "trGradeNameFldLbl": "اسم الصف",
     "trGradeNameFldPlc": "الرجاء إدخال اسم الصف",
     "trGradeDescriptionFldLbl": "التوصيف",
-    "trGradeDescriptionFldPlc": "الرجاء إدخال التوصيف"
+    "trGradeDescriptionFldPlc": "الرجاء إدخال التوصيف",
+
+    "trStudYearPgHdr": "السنوات الدراسيه",
+    "trStudYearNameFldLbl": "الاسم",
+    "trStudYearNameFldPlc": "الرجاء إدخال الاسم",
+    "trStudYearStartYearFldLbl": "سنه البدء",
+    "trStudYearStartYearFldPlc": "الرجاء إدخال سنه البدء",
+    "trStudYearEndYearFldLbl": "سنه النهايه",
+    "trStudYearEndYearFldPlc": "الرجاء إدخال سنه النهايه",
+    "trStudYearDescriptionFldLbl": "التوصيف",
+    "trStudYearDescriptionFldPlc": "الرجاء إدخال التوصيف"
 }
