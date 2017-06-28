@@ -32,6 +32,7 @@
     "trGenSaveBtn": "حفظ",
     "trGenBackBtn": "عوده",
     "trGenDetailsBtn": "التفاصيل",
+    "trGenEditingPage": "صفحه تعديل",
     "trGenValdFieldIsRequired": "الحقل مطلوب",
     "trGenDelelteConfirmMessage": "الرجاء التاكيد على حذف البيانات ؟",
 
@@ -61,5 +62,7 @@
 
     "trStudClassPgHdr": "صفوف الطلاب",
 
-    "trClassEditStudsBtn": "الطلاب"
+    "trClassEditStudsBtn": "الطلاب",
+    "trStudentsListBtn": "الصفوف",
+    "trClassStudEditingPgHdr": "تعديل طلاب صف"
 }

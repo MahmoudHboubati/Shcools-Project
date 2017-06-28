@@ -18,14 +18,16 @@ namespace vega.Mapping
             //Class module
             CreateMap<Class, ClassResource>()
                 .ForMember(c => c.Students, opt => opt.MapFrom(cr => cr.Students.Select(c => c.StudentId)));
-            CreateMap<ClassResource, Class>().ForMember(c => c.Students, opt => opt.Ignore())
+            CreateMap<ClassResource, Class>()
+            .ForMember(c => c.Id, opt => opt.Ignore())
+            .ForMember(c => c.Students, opt => opt.Ignore())
             .AfterMap((cr, c) =>
             {
                 var removedStudents = c.Students.Where(clas => !cr.Students.Contains(clas.StudentId)).ToList();
                 foreach (var s in removedStudents)
                     c.Students.Remove(s);
 
-                var addedStudents = cr.Students.Where(id => !c.Students.Any(s => s.StudentId == id)).Select(id => new StudentClass { Id = id }).ToList();
+                var addedStudents = cr.Students.Where(id => !c.Students.Any(s => s.StudentId == id)).Select(id => new StudentClass { StudentId = id, ClassId = c.Id }).ToList();
                 foreach (var clsStd in addedStudents)
                     c.Students.Add(clsStd);
             });
