@@ -9,6 +9,7 @@
     "trGradesLink": "الصفوف (المراحل التعليميه)",
     "trStudyingYearsLink": "السنوات الدراسيه",
     "trClassLink": "الصفوف",
+    "trStudentClassLink": "صفوف الطلاب",
 
     "trStudNameFldLbl": "اسم الطالب",
     "trStudNameFldPlc": "الرجاء إدخال اسم الطالب",
@@ -28,6 +29,9 @@
 
     "trGenAddBtn": "إضافه",
     "trGenDeleteBtn": "حذف",
+    "trGenSaveBtn": "حفظ",
+    "trGenBackBtn": "عوده",
+    "trGenDetailsBtn": "التفاصيل",
     "trGenValdFieldIsRequired": "الحقل مطلوب",
     "trGenDelelteConfirmMessage": "الرجاء التاكيد على حذف البيانات ؟",
 
@@ -53,5 +57,9 @@
     "trClassDescriptionFldLbl": "التوصيف",
     "trClassDescriptionFldPlc": "الرجاء إدخال التوصيف",
     "trClassStdYearFldLbl": "السنه الدراسيه",
-    "trClassGradeFldLbl": "الصف الدراسي"
+    "trClassGradeFldLbl": "الصف الدراسي",
+
+    "trStudClassPgHdr": "صفوف الطلاب",
+
+    "trClassEditStudsBtn": "الطلاب"
 }

@@ -47,6 +47,10 @@
           <span class="glyphicon glyphicon-trash"></span>
           {{'trGenDeleteBtn' | translate}}
         </button>
+        <button class="btn btn-default" (click)="routeToStudentsEdit(item)">
+          <span class="glyphicon glyphicon-list"></span>
+          {{'trClassEditStudsBtn' | translate}}
+        </button>
       </td>
       <td>{{ item.name }}</td>
       <td>{{ item.description }}</td>

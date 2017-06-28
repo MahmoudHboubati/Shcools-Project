@@ -1,0 +1,24 @@
+<h1>
+  {{class.name}}
+</h1>
+<hr />
+<div class="row">
+  <div class="col-lg-6">
+    <div class="list-group">
+      <a class="list-group-item" *ngFor="let student of allStudents">
+        <h4 class="list-group-item-heading" *ngIf="student.fullName">{{student.fullName}}</h4>
+        <h4 class="list-group-item-heading" *ngIf="!student.fullName">{{student.name}} {{student.lastName}}</h4>
+        <p class="list-group-item-heading">
+          <button *ngIf="!(students.indexOf(student.id)>-1)" (click)="addStudent(student)" class="btn btn-xs pull-left btn-primary">
+              <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn' | translate}}
+          </button> {{student.birthDate | date}}
+          <button *ngIf="students.indexOf(student.id)>-1" (click)="removeStudent(student)" class="btn btn-xs pull-left btn-danger">
+              <span class="glyphicon glyphicon-trash"></span> {{'trGenDeleteBtn' | translate}}
+          </button>
+        </p>
+      </a>
+    </div>
+    <button class="btn btn-primary" (click)="backToList()"><span class="glyphicon glyphicon-chevron-right"></span> {{'trGenBackBtn'|translate}}</button>
+    <button class="btn btn-success" (click)="saveChanges()"><span class="glyphicon glyphicon-save"></span> {{'trGenSaveBtn'|translate}}</button>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -18,12 +19,32 @@ namespace vega.Controllers
         {
         }
 
+        #region Get
         [HttpGet]
         public async Task<IEnumerable<StudentResource>> Get()
         {
             var students = await context.Students.ToListAsync();
             return mapper.Map<List<Student>, List<StudentResource>>(students);
         }
+
+        [HttpGet]
+        [Route("/api/students/class/{classId}")]
+        public async Task<IActionResult> GetByClassId(int classId)
+        {
+            var queryRes =
+                from sc in context.StudentClasses
+                join cls in context.Classes on sc.ClassId equals cls.Id
+                join std in context.Students on sc.StudentId equals std.Id
+                where sc.ClassId == classId
+                select std;
+
+            var students = await queryRes.ToListAsync();
+
+            var mapped = mapper.Map<List<Student>, List<StudentResource>>(students);
+
+            return Ok(mapped);
+        }
+        #endregion
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody]StudentResource studentResource)
@@ -38,7 +59,6 @@ namespace vega.Controllers
             var result = mapper.Map<StudentResource>(student);
             return Ok(result);
         }
-
 
         [HttpDelete("{id}")]
         public override async Task<IActionResult> Delete(int id)

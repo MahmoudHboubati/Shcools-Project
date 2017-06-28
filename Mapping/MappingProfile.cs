@@ -1,3 +1,4 @@
+using System.Linq;
 using AutoMapper;
 using vega.Controllers.Resources;
 using vega.Models;
@@ -12,7 +13,22 @@ namespace vega.Mapping
             CreateMap<StudentRegistration, StudentRegistrationResource>().ReverseMap();
             CreateMap<Grade, GradeResource>().ReverseMap();
             CreateMap<StudyingYear, StudyingYearResource>().ReverseMap();
-            CreateMap<Class, ClassResource>().ReverseMap();
+            CreateMap<StudentClass, StudentClassResource>().ReverseMap();
+
+            //Class module
+            CreateMap<Class, ClassResource>()
+                .ForMember(c => c.Students, opt => opt.MapFrom(cr => cr.Students.Select(c => c.StudentId)));
+            CreateMap<ClassResource, Class>().ForMember(c => c.Students, opt => opt.Ignore())
+            .AfterMap((cr, c) =>
+            {
+                var removedStudents = c.Students.Where(clas => !cr.Students.Contains(clas.StudentId)).ToList();
+                foreach (var s in removedStudents)
+                    c.Students.Remove(s);
+
+                var addedStudents = cr.Students.Where(id => !c.Students.Any(s => s.StudentId == id)).Select(id => new StudentClass { Id = id }).ToList();
+                foreach (var clsStd in addedStudents)
+                    c.Students.Add(clsStd);
+            });
         }
     }
 }

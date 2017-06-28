@@ -1,0 +1,78 @@
+<h1>
+  {{'trStudClassPgHdr' | translate}}
+</h1>
+<div class="row">
+  <div class="col-lg-12">
+    <table class="table" *ngIf="classes">
+      <thead>
+        <tr>
+          <th>{{'trGenDeleteBtn' | translate}}</th>
+          <th>{{'trClassNameFldLbl' | translate}}</th>
+          <th>{{'trClassDescriptionFldLbl' | translate}}</th>
+          <th>{{'trClassStdYearFldLbl' | translate}}</th>
+          <th>{{'trClassGradeFldLbl' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of classes">
+          <td>
+            <button class="btn btn-default" (click)="loadStudents(item)">
+              <span class="glyphicon glyphicon-list"></span>
+              {{'trGenDetailsBtn' | translate}}
+            </button>
+            <button class="btn btn-default" (click)="loadStudentClassesByClass(item)">
+             load
+            </button>
+          </td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.studyingYearId }}</td>
+          <td>{{ item.gradeId }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row" *ngIf="selectedClass">
+  <div class="col-lg-8">
+    <table class="table" *ngIf="students">
+      <thead>
+        <tr>
+          <th>{{'trGenDeleteBtn' | translate}}</th>
+          <th>{{'trStudNameFldLbl' | translate}}</th>
+          <th>{{'trStudMiddleNameFldLbl' | translate}}</th>
+          <th>{{'trStudLastNameFldLbl' | translate}}</th>
+          <th>{{'trStudBirthDateFldLbl' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>
+            <button class="btn btn-danger" (click)="delete(student)">
+              <span class="glyphicon glyphicon-trash"></span>
+              {{'trGenDeleteBtn' | translate}}
+          </button>
+          </td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.midlleName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.birthDate | date }}</td>
+          <td>{{ student | json }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-4">
+    <div class="list-group">
+      <a class="list-group-item" [ngClass]="{'list-group-item-info':student.isExist}" *ngFor="let student of allStudents">
+        <h4 class="list-group-item-heading" *ngIf="student.fullName">{{student.fullName}}</h4>
+        <h4 class="list-group-item-heading" *ngIf="!student.fullName">{{student.name}} {{student.lastName}}</h4>
+        <p class="list-group-item-text">
+          <button *ngIf="!student.isExist" (click)="addStudent(student)" class="btn btn-xs pull-left btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn' | translate}}
+          </button> {{student.birthDate | date}}
+        </p>
+      </a>
+    </div>
+  </div>
+</div>

@@ -14,6 +14,10 @@ export class BaseService {
     return this.http.get(this.baseUrl).map(res => { return res.json(); });
   }
 
+  get(id) {
+    return this.http.get(this.baseUrl + '/' + id).map(res => { return res.json(); });
+  }
+
   add(item: any) {
     return this.http.post(this.baseUrl, item).map(res => { return res.json(); });
   }
