@@ -10,6 +10,7 @@
     "trStudyingYearsLink": "السنوات الدراسيه",
     "trClassLink": "الصفوف",
     "trStudentClassLink": "صفوف الطلاب",
+    "trMaterialLink": "المواد",
 
     "trStudNameFldLbl": "اسم الطالب",
     "trStudNameFldPlc": "الرجاء إدخال اسم الطالب",
@@ -64,5 +65,11 @@
 
     "trClassEditStudsBtn": "الطلاب",
     "trStudentsListBtn": "الصفوف",
-    "trClassStudEditingPgHdr": "تعديل طلاب صف"
+    "trClassStudEditingPgHdr": "تعديل طلاب صف",
+
+    "trMaterialPgHdr": "المواد الدراسيه",
+    "trMaterialNameFldLbl": "اسم الماده",
+    "trMaterialNameFldPlc": "الرجاء إدخال اسم الماده",
+    "trMaterialDescriptionFldLbl": "التوصيف",
+    "trMaterialDescriptionFldPlc": "الرجاء إدخال التوصيف"
 }

@@ -76,10 +76,8 @@ export class StudentReginstrationComponent extends BaseComponent implements OnIn
   delete(studentRegistration) {
     if (confirm(this.delConfirmMessage) == true) {
       this.stdRegService.delete(studentRegistration).subscribe(id => {
-        this.studentsRegistrations.forEach((element, index) => {
-          if (index > -1 && element.id == id)
-            this.studentsRegistrations.splice(index, index + 1);
-        });
+        var index = this.studentsRegistrations.map(i => i.id).indexOf(id);
+        this.studentsRegistrations.splice(index, 1);
       });
     }
   }

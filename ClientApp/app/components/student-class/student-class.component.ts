@@ -68,8 +68,8 @@ export class StudentClassComponent extends BaseComponent implements OnInit {
 
       this.studentClassService.delete(item).subscribe(id => {
         this.students.forEach((element, index) => {
-          if (index > -1 && element.id == id)
-            this.students.splice(index, index + 1);
+          var index = this.students.map(i => i.id).indexOf(id);
+          this.students.splice(index, 1);
         });
         this.identifyExisting();
       });

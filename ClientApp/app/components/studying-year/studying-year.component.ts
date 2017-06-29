@@ -35,10 +35,8 @@ export class StudyingYearComponent extends BaseComponent implements OnInit {
   delete(studentRegistration) {
     if (confirm(this.delConfirmMessage) == true) {
       this.studyingService.delete(studentRegistration).subscribe(id => {
-        this.studyingYears.forEach((element, index) => {
-          if (index > -1 && element.id == id)
-            this.studyingYears.splice(index, index + 1);
-        });
+        var index = this.studyingYears.map(i => i.id).indexOf(id);
+        this.studyingYears.splice(index, 1);
       });
     }
   }

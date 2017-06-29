@@ -35,10 +35,8 @@ export class GradeFormComponent extends BaseComponent implements OnInit {
   delete(studentRegistration) {
     if (confirm(this.delConfirmMessage) == true) {
       this.gradeService.delete(studentRegistration).subscribe(id => {
-        this.grades.forEach((element, index) => {
-          if (index > -1 && element.id == id)
-            this.grades.splice(index, index + 1);
-        });
+        var index = this.grades.map(i => i.id).indexOf(id);
+        this.grades.splice(index, 1);
       });
     }
   }

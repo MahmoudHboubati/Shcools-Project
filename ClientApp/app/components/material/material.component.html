@@ -1,0 +1,39 @@
+<h1>
+  {{'trMaterialPgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
+  <div class="form-group">
+    <label for="name">{{'trMaterialNameFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="current.name" name="name" id="name" placeholder="{{'trMaterialNameFldPlc'|translate}}"
+      required #name="ngModel">
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="description">{{'trMaterialDescriptionFldLbl' | translate}}</label>
+    <textarea class="form-control" type="text" [(ngModel)]="current.description" name="description" id="description" placeholder="{{'trMaterialDescriptionFldPlc'|translate}}"></textarea>
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="materials">
+  <thead>
+    <tr>
+      <th>{{'trGenDeleteBtn' | translate}}</th>
+      <th>{{'trMaterialNameFldLbl' | translate}}</th>
+      <th>{{'trMaterialDescriptionFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of materials">
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+    </tr>
+  </tbody>
+</table>

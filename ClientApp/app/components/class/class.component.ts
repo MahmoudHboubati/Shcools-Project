@@ -57,10 +57,8 @@ export class ClassComponent extends BaseComponent implements OnInit {
   delete(deleteItem) {
     if (confirm(this.delConfirmMessage) == true) {
       this.classService.delete(deleteItem).subscribe(id => {
-        this.classes.forEach((element, index) => {
-          if (index > -1 && element.id == id)
-            this.classes.splice(index, index + 1);
-        });
+        var index = this.classes.map(i => i.id).indexOf(id);
+        this.classes.splice(index, 1);
       });
     }
   }
