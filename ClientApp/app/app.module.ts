@@ -25,6 +25,9 @@ import { ClassComponent } from './components/class/class.component';
 import { StudentClassComponent } from './components/student-class/student-class.component';
 import { ClassStudentsComponent } from './components/class-students/class-students.component';
 
+import * as components from './components/custom/index';
+const allComponents = Object.keys(components).map(k => components[k]);
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: Http) {
     return new TranslateHttpLoader(http, './i18n/', '.json');
@@ -44,8 +47,10 @@ export function HttpLoaderFactory(http: Http) {
         StudyingYearComponent,
         ClassComponent,
         StudentClassComponent,
-        ClassStudentsComponent
+        ClassStudentsComponent,
+        allComponents
     ],
+    exports: allComponents,
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         FormsModule,
