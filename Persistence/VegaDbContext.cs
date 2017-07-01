@@ -19,5 +19,6 @@ namespace vega.Persistence
         public DbSet<Class> Classes { get; internal set; }
         public DbSet<StudentClass> StudentClasses { get; internal set; }
         public DbSet<Material> Materials { get; internal set; }
+        public DbSet<Semester> Semesters { get; internal set; }
     }
 }

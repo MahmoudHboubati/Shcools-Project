@@ -1,3 +1,4 @@
+import { SemesterService } from './services/semester.service';
 import { MaterialService } from './services/material.service';
 import { StudentClassService } from './services/student-class.service';
 import { ClassService } from './services/class.service';
@@ -28,6 +29,7 @@ import { ClassStudentsComponent } from './components/class-students/class-studen
 
 import * as components from './components/custom/index';
 import { MaterialComponent } from './components/material/material.component';
+import { SemesterComponent } from './components/semester/semester.component';
 const allComponents = Object.keys(components).map(k => components[k]);
 
 // AoT requires an exported function for factories
@@ -51,7 +53,8 @@ export function HttpLoaderFactory(http: Http) {
         StudentClassComponent,
         ClassStudentsComponent,
         allComponents,
-        MaterialComponent
+        MaterialComponent,
+        SemesterComponent
     ],
     exports: allComponents,
     imports: [
@@ -69,6 +72,7 @@ export function HttpLoaderFactory(http: Http) {
 
             { path: 'grades/new', component: GradeFormComponent },
             { path: 'material/new', component: MaterialComponent },
+            { path: 'semester/new', component: SemesterComponent },
 
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
@@ -83,7 +87,14 @@ export function HttpLoaderFactory(http: Http) {
             }
         })
     ],
-    providers: [StudentService, StudentRegistrationService, GradeService, StudyingYearService, ClassService, StudentClassService, MaterialService]
+    providers: [StudentService,
+        StudentRegistrationService,
+        GradeService,
+        StudyingYearService,
+        ClassService,
+        StudentClassService,
+        MaterialService,
+        SemesterService]
 })
 export class AppModule {
 }

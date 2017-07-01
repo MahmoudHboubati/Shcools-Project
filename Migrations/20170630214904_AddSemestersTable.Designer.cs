@@ -8,9 +8,10 @@ using vega.Persistence;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    partial class VegaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170630214904_AddSemestersTable")]
+    partial class AddSemestersTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -85,11 +86,7 @@ namespace Vega.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("StudyingYearId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StudyingYearId");
 
                     b.ToTable("Semesters");
                 });
@@ -165,14 +162,6 @@ namespace Vega.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StudyingYears");
-                });
-
-            modelBuilder.Entity("vega.Models.Semester", b =>
-                {
-                    b.HasOne("vega.Models.StudyingYear", "StudyingYear")
-                        .WithMany()
-                        .HasForeignKey("StudyingYearId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("vega.Models.StudentClass", b =>

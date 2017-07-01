@@ -1,0 +1,49 @@
+<h1>
+  {{'trSemesterPgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
+  <div class="form-group">
+    <label for="name">{{'trSemesterNameFldLbl' | translate}}</label>
+    <input class="form-control" type="text" [(ngModel)]="current.name" name="name" id="name" placeholder="{{'trSemesterNameFldPlc'|translate}}"
+      required #name="ngModel">
+    <div class="alert alert-danger" *ngIf="name.touched && !name.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="description">{{'trSemesterDescriptionFldLbl' | translate}}</label>
+    <textarea class="form-control" type="text" [(ngModel)]="current.description" name="description" id="description" placeholder="{{'trSemesterDescriptionFldPlc'|translate}}"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="studyingYearId">{{'trSemesterYearFldLbl' | translate}}</label>
+    <select class="form-control" name="studyingYearId" id="studyingYearId" [(ngModel)]="current.studyingYear" required #studyingYearId="ngModel">
+        <option *ngFor="let r of studyingYears" [ngValue]="r">{{ r.name }}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="studyingYearId.touched && !studyingYearId.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+    {{current|json}}
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="semesters">
+  <thead>
+    <tr>
+      <th>{{'trGenDeleteBtn' | translate}}</th>
+      <th>{{'trSemesterNameFldLbl' | translate}}</th>
+      <th>{{'trSemesterDescriptionFldLbl' | translate}}</th>
+      <th>{{'trSemesterYearFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of semesters">
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.description }}</td>
+      <td>{{ item.studyingYear.name }}</td>
+    </tr>
+  </tbody>
+</table>

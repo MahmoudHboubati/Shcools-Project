@@ -11,12 +11,20 @@ namespace vega.Mapping
         {
             CreateMap<Student, StudentResource>().ReverseMap();
             CreateMap<StudentRegistration, StudentRegistrationResource>().ReverseMap();
-            CreateMap<StudyingYear, StudyingYearResource>().ReverseMap();
+
+            CreateMap<StudyingYear, StudyingYearResource>();
+            CreateMap<StudyingYearResource, StudyingYear>()
+                .ForMember(s => s.Id, opt => opt.Ignore());
+
             CreateMap<StudentClass, StudentClassResource>().ReverseMap();
 
             //lookups
             CreateMap<Grade, GradeResource>().ReverseMap();
             CreateMap<Material, MaterialResource>().ReverseMap();
+
+            CreateMap<Semester, SemesterResource>();
+            CreateMap<SemesterResource, Semester>()
+                .ForMember(sr => sr.Id, opt => opt.Ignore());
 
             //class module
             CreateMap<Class, ClassResource>()
