@@ -67,6 +67,11 @@
                         <span class='glyphicon glyphicon-plus'></span> {{'trSemesterLink' | translate}}
                     </a>
                 </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/exam/new']">
+                        <span class='glyphicon glyphicon-plus'></span> {{'trExamLink' | translate}}
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

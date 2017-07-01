@@ -9,4 +9,8 @@ export class SemesterService extends LookupsService {
     super(http, 'api/semester');
   }
 
+  // getListIncludeAll() {
+  //   return this.http.get(this.baseUrl + '/getListIncludeAll').map(res => { return res.json(); });
+  // }
+
 }

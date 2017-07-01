@@ -8,9 +8,10 @@ using vega.Persistence;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    partial class VegaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170701130323_AddExamTable")]
+    partial class AddExamTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -39,8 +40,6 @@ namespace Vega.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ClassId");
-
                     b.Property<int>("Duration");
 
                     b.Property<int>("MaterialId");
@@ -50,12 +49,6 @@ namespace Vega.Migrations
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
-
-                    b.HasIndex("MaterialId");
-
-                    b.HasIndex("SemesterId");
 
                     b.ToTable("Exams");
                 });
@@ -191,24 +184,6 @@ namespace Vega.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StudyingYears");
-                });
-
-            modelBuilder.Entity("vega.Models.Exam", b =>
-                {
-                    b.HasOne("vega.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("vega.Models.Material", "Material")
-                        .WithMany()
-                        .HasForeignKey("MaterialId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("vega.Models.Semester", "Semester")
-                        .WithMany()
-                        .HasForeignKey("SemesterId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("vega.Models.Semester", b =>

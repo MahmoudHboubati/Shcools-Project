@@ -12,6 +12,7 @@
     "trStudentClassLink": "صفوف الطلاب",
     "trMaterialLink": "المواد",
     "trSemesterLink": "الفصول الدراسيه",
+    "trExamLink": "فحوص الطلاب",
 
     "trStudNameFldLbl": "اسم الطالب",
     "trStudNameFldPlc": "الرجاء إدخال اسم الطالب",
@@ -79,5 +80,14 @@
     "trSemesterNameFldPlc": "الرجاء إدخال اسم الفصل",
     "trSemesterDescriptionFldLbl": "التوصيف",
     "trSemesterDescriptionFldPlc": "الرجاء إدخال التوصيف",
-    "trSemesterYearFldLbl": "السنه الدراسيه"
+    "trSemesterYearFldLbl": "السنه الدراسيه",
+
+    "trExamPgHdr":"فحوص الطلاب",
+    "trExamSemesterFldLbl": "الفصل الدراسي",
+    "trExamClassFldLbl": "الصف",
+    "trExamMaterialFldLbl": "الماده",
+    "trExamSDateFldLbl": "تاديخ البدء",
+    "trExamSDateFldPlc": "الرجاء إدخال تاديخ البدء",
+    "trExamDurationFldLbl": "المده(ساعه)",
+    "trExamDurationFldPlc":"الرجاء إدخال المده"
 }

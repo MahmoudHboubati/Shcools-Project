@@ -4,3 +4,4 @@ select * from Students
 --VALUES ('01/01/1988', 'Hboubati', '', 'Mahmoud')
 
 SELECT * FROM StudentRegistrations
+SELECT * FROM EXAMS

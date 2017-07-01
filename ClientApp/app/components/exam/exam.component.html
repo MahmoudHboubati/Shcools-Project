@@ -1,0 +1,68 @@
+<h1>
+  {{'trExamPgHdr' | translate}}
+</h1>
+<form #f="ngForm" (ngSubmit)="addNew(f)" novalidate>
+  <div class="form-group">
+    <label for="semesterId">{{'trExamSemesterFldLbl' | translate}}</label>
+    <select class="form-control" name="semesterId" id="semesterId" [(ngModel)]="current.semesterId" required #semesterId="ngModel">
+        <option *ngFor="let r of semesters" [ngValue]="r.id">{{ r.name }}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="semesterId.touched && !semesterId.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="classId">{{'trExamClassFldLbl' | translate}}</label>
+    <select class="form-control" name="classId" id="classId" [(ngModel)]="current.classId" required #classId="ngModel">
+        <option *ngFor="let r of classes" [ngValue]="r.id">{{ r.name }}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="classId.touched && !classId.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="materialId">{{'trExamMaterialFldLbl' | translate}}</label>
+    <select class="form-control" name="materialId" id="materialId" [(ngModel)]="current.materialId" required #materialId="ngModel">
+        <option *ngFor="let r of materials" [ngValue]="r.id">{{ r.name }}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="materialId.touched && !materialId.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="startDate">{{'trExamSDateFldLbl' | translate}}</label>
+    <input class="form-control" type="date" name="startDate" id="startDate" [(ngModel)]="current.startDate" required #startDate="ngModel"
+    />
+    <div class="alert alert-danger" *ngIf="startDate.touched && !startDate.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <div class="form-group">
+    <label for="duration">{{'trExamDurationFldLbl' | translate}}</label>
+    <input class="form-control" type="number" name="duration" id="duration" placeholder="{{'trExamDurationFldPlc' | translate}}"
+      [(ngModel)]="current.duration" required #duration="ngModel" />
+    <div class="alert alert-danger" *ngIf="duration.touched && !duration.valid">{{'trGenValdFieldIsRequired' | translate}}</div>
+  </div>
+  <button class="btn btn-primary" [disabled]="!f.valid">
+    <span class="glyphicon glyphicon-plus"></span> {{'trGenAddBtn'|translate}}
+  </button>
+</form>
+<table class="table" *ngIf="exams">
+  <thead>
+    <tr>
+      <th>{{'trGenDeleteBtn' | translate}}</th>
+      <th>{{'trExamSemesterFldLbl' | translate}}</th>
+      <th>{{'trExamClassFldLbl' | translate}}</th>
+      <th>{{'trExamMaterialFldLbl' | translate}}</th>
+      <th>{{'trExamSDateFldLbl' | translate}}</th>
+      <th>{{'trExamDurationFldLbl' | translate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of exams">
+      <td>
+        <button class="btn btn-danger" (click)="delete(item)">
+          <span class="glyphicon glyphicon-trash"></span>
+          {{'trGenDeleteBtn' | translate}}
+        </button>
+      </td>
+      <td>{{ item.semester.name }}</td>
+      <td>{{ item.class.name }}</td>
+      <td>{{ item.material.name }}</td>
+      <td>{{ item.startDate }}</td>
+      <td>{{ item.duration }}</td>
+    </tr>
+  </tbody>
+</table>

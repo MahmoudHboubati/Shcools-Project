@@ -8,9 +8,10 @@ using vega.Persistence;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    partial class VegaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170701130942_ExamTableRelationSemesterAndMaterial")]
+    partial class ExamTableRelationSemesterAndMaterial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -39,8 +40,6 @@ namespace Vega.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ClassId");
-
                     b.Property<int>("Duration");
 
                     b.Property<int>("MaterialId");
@@ -50,8 +49,6 @@ namespace Vega.Migrations
                     b.Property<DateTime>("StartDate");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
 
                     b.HasIndex("MaterialId");
 
@@ -195,11 +192,6 @@ namespace Vega.Migrations
 
             modelBuilder.Entity("vega.Models.Exam", b =>
                 {
-                    b.HasOne("vega.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("vega.Models.Material", "Material")
                         .WithMany()
                         .HasForeignKey("MaterialId")

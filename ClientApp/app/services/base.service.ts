@@ -25,4 +25,8 @@ export class BaseService {
   delete(item: any) {
     return this.http.delete(this.baseUrl + '/' + item.id).map(res => { return res.json(); });
   }
+
+  getListIncludeAll() {
+    return this.http.get(this.baseUrl + '/getListIncludeAll').map(res => { return res.json(); });
+  }
 }

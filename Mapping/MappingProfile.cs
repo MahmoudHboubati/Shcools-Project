@@ -20,10 +20,16 @@ namespace vega.Mapping
 
             //lookups
             CreateMap<Grade, GradeResource>().ReverseMap();
-            CreateMap<Material, MaterialResource>().ReverseMap();
+            CreateMap<Material, MaterialResource>();
+            CreateMap<MaterialResource, Material>()
+                .ForMember(m => m.Id, opt => opt.Ignore());
 
             CreateMap<Semester, SemesterResource>();
             CreateMap<SemesterResource, Semester>()
+                .ForMember(sr => sr.Id, opt => opt.Ignore());
+
+            CreateMap<Exam, ExamResource>();
+            CreateMap<ExamResource, Exam>()
                 .ForMember(sr => sr.Id, opt => opt.Ignore());
 
             //class module
